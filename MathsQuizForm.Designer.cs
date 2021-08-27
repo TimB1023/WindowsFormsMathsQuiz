@@ -1,7 +1,7 @@
 ﻿
 namespace MathsQuiz
 {
-    partial class Form1
+    partial class MathsQuizForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,6 +29,7 @@ namespace MathsQuiz
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.timeLabel = new System.Windows.Forms.Label();
             this.timeLeftLable = new System.Windows.Forms.Label();
             this.plusLeftLabel = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@ namespace MathsQuiz
             this.divideEqualsLabel = new System.Windows.Forms.Label();
             this.quotient = new System.Windows.Forms.NumericUpDown();
             this.startButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.sum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.difference)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
@@ -280,8 +282,14 @@ namespace MathsQuiz
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start the Quiz";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // Form1
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // MathsQuizForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -311,7 +319,7 @@ namespace MathsQuiz
             this.Controls.Add(this.timeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MathsQuizForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.sum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.difference)).EndInit();
@@ -347,6 +355,7 @@ namespace MathsQuiz
         private System.Windows.Forms.Label divideEqualsLabel;
         private System.Windows.Forms.NumericUpDown quotient;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
