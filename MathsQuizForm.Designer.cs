@@ -30,26 +30,26 @@ namespace MathsQuiz
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.sum = new System.Windows.Forms.NumericUpDown();
             this.timeLabel = new System.Windows.Forms.Label();
             this.timeLeftLable = new System.Windows.Forms.Label();
             this.plusLeftLabel = new System.Windows.Forms.Label();
             this.plusOperationLabel = new System.Windows.Forms.Label();
             this.plusRightLabel = new System.Windows.Forms.Label();
             this.plusEqualsLabel = new System.Windows.Forms.Label();
-            this.sum = new System.Windows.Forms.NumericUpDown();
             this.minusLeftLabel = new System.Windows.Forms.Label();
             this.minusOperationLabel = new System.Windows.Forms.Label();
             this.minusRightLabel = new System.Windows.Forms.Label();
             this.minusEqualsLabel = new System.Windows.Forms.Label();
             this.difference = new System.Windows.Forms.NumericUpDown();
-            this.multiplyLeftLabel = new System.Windows.Forms.Label();
+            this.timesLeftLabel = new System.Windows.Forms.Label();
             this.multiplyOperationLabel = new System.Windows.Forms.Label();
-            this.multiplyRightLabel = new System.Windows.Forms.Label();
+            this.timesRightLabel = new System.Windows.Forms.Label();
             this.multiplyEqualsLabel = new System.Windows.Forms.Label();
             this.product = new System.Windows.Forms.NumericUpDown();
-            this.divideLeftLabel = new System.Windows.Forms.Label();
+            this.dividedLeftLabel = new System.Windows.Forms.Label();
             this.divideOperationLabel = new System.Windows.Forms.Label();
-            this.divideRightLabel = new System.Windows.Forms.Label();
+            this.dividedRightLabel = new System.Windows.Forms.Label();
             this.divideEqualsLabel = new System.Windows.Forms.Label();
             this.quotient = new System.Windows.Forms.NumericUpDown();
             this.startButton = new System.Windows.Forms.Button();
@@ -59,6 +59,15 @@ namespace MathsQuiz
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotient)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sum
+            // 
+            this.sum.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sum.Location = new System.Drawing.Point(314, 82);
+            this.sum.Name = "sum";
+            this.sum.Size = new System.Drawing.Size(120, 39);
+            this.sum.TabIndex = 2;
+            this.sum.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // timeLabel
             // 
@@ -120,14 +129,6 @@ namespace MathsQuiz
             this.plusEqualsLabel.Text = "=";
             this.plusEqualsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // sum
-            // 
-            this.sum.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sum.Location = new System.Drawing.Point(314, 82);
-            this.sum.Name = "sum";
-            this.sum.Size = new System.Drawing.Size(120, 39);
-            this.sum.TabIndex = 2;
-            // 
             // minusLeftLabel
             // 
             this.minusLeftLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -175,16 +176,17 @@ namespace MathsQuiz
             this.difference.Name = "difference";
             this.difference.Size = new System.Drawing.Size(120, 39);
             this.difference.TabIndex = 3;
+            this.difference.Enter += new System.EventHandler(this.answer_Enter);
             // 
-            // multiplyLeftLabel
+            // timesLeftLabel
             // 
-            this.multiplyLeftLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.multiplyLeftLabel.Location = new System.Drawing.Point(50, 166);
-            this.multiplyLeftLabel.Name = "multiplyLeftLabel";
-            this.multiplyLeftLabel.Size = new System.Drawing.Size(60, 50);
-            this.multiplyLeftLabel.TabIndex = 2;
-            this.multiplyLeftLabel.Text = "?";
-            this.multiplyLeftLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timesLeftLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.timesLeftLabel.Location = new System.Drawing.Point(50, 166);
+            this.timesLeftLabel.Name = "timesLeftLabel";
+            this.timesLeftLabel.Size = new System.Drawing.Size(60, 50);
+            this.timesLeftLabel.TabIndex = 2;
+            this.timesLeftLabel.Text = "?";
+            this.timesLeftLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // multiplyOperationLabel
             // 
@@ -196,15 +198,15 @@ namespace MathsQuiz
             this.multiplyOperationLabel.Text = "x";
             this.multiplyOperationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // multiplyRightLabel
+            // timesRightLabel
             // 
-            this.multiplyRightLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.multiplyRightLabel.Location = new System.Drawing.Point(182, 166);
-            this.multiplyRightLabel.Name = "multiplyRightLabel";
-            this.multiplyRightLabel.Size = new System.Drawing.Size(60, 50);
-            this.multiplyRightLabel.TabIndex = 4;
-            this.multiplyRightLabel.Text = "?";
-            this.multiplyRightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timesRightLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.timesRightLabel.Location = new System.Drawing.Point(182, 166);
+            this.timesRightLabel.Name = "timesRightLabel";
+            this.timesRightLabel.Size = new System.Drawing.Size(60, 50);
+            this.timesRightLabel.TabIndex = 4;
+            this.timesRightLabel.Text = "?";
+            this.timesRightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // multiplyEqualsLabel
             // 
@@ -223,16 +225,17 @@ namespace MathsQuiz
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(120, 39);
             this.product.TabIndex = 4;
+            this.product.Enter += new System.EventHandler(this.answer_Enter);
             // 
-            // divideLeftLabel
+            // dividedLeftLabel
             // 
-            this.divideLeftLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.divideLeftLabel.Location = new System.Drawing.Point(50, 211);
-            this.divideLeftLabel.Name = "divideLeftLabel";
-            this.divideLeftLabel.Size = new System.Drawing.Size(60, 50);
-            this.divideLeftLabel.TabIndex = 2;
-            this.divideLeftLabel.Text = "?";
-            this.divideLeftLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dividedLeftLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dividedLeftLabel.Location = new System.Drawing.Point(50, 211);
+            this.dividedLeftLabel.Name = "dividedLeftLabel";
+            this.dividedLeftLabel.Size = new System.Drawing.Size(60, 50);
+            this.dividedLeftLabel.TabIndex = 2;
+            this.dividedLeftLabel.Text = "?";
+            this.dividedLeftLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // divideOperationLabel
             // 
@@ -244,15 +247,15 @@ namespace MathsQuiz
             this.divideOperationLabel.Text = "/";
             this.divideOperationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // divideRightLabel
+            // dividedRightLabel
             // 
-            this.divideRightLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.divideRightLabel.Location = new System.Drawing.Point(182, 211);
-            this.divideRightLabel.Name = "divideRightLabel";
-            this.divideRightLabel.Size = new System.Drawing.Size(60, 50);
-            this.divideRightLabel.TabIndex = 4;
-            this.divideRightLabel.Text = "?";
-            this.divideRightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dividedRightLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dividedRightLabel.Location = new System.Drawing.Point(182, 211);
+            this.dividedRightLabel.Name = "dividedRightLabel";
+            this.dividedRightLabel.Size = new System.Drawing.Size(60, 50);
+            this.dividedRightLabel.TabIndex = 4;
+            this.dividedRightLabel.Text = "?";
+            this.dividedRightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // divideEqualsLabel
             // 
@@ -271,6 +274,7 @@ namespace MathsQuiz
             this.quotient.Name = "quotient";
             this.quotient.Size = new System.Drawing.Size(120, 39);
             this.quotient.TabIndex = 5;
+            this.quotient.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // startButton
             // 
@@ -300,17 +304,17 @@ namespace MathsQuiz
             this.Controls.Add(this.product);
             this.Controls.Add(this.multiplyEqualsLabel);
             this.Controls.Add(this.difference);
-            this.Controls.Add(this.divideRightLabel);
+            this.Controls.Add(this.dividedRightLabel);
             this.Controls.Add(this.minusEqualsLabel);
-            this.Controls.Add(this.multiplyRightLabel);
+            this.Controls.Add(this.timesRightLabel);
             this.Controls.Add(this.sum);
             this.Controls.Add(this.divideOperationLabel);
             this.Controls.Add(this.minusRightLabel);
             this.Controls.Add(this.multiplyOperationLabel);
             this.Controls.Add(this.plusEqualsLabel);
-            this.Controls.Add(this.divideLeftLabel);
+            this.Controls.Add(this.dividedLeftLabel);
             this.Controls.Add(this.minusOperationLabel);
-            this.Controls.Add(this.multiplyLeftLabel);
+            this.Controls.Add(this.timesLeftLabel);
             this.Controls.Add(this.plusRightLabel);
             this.Controls.Add(this.minusLeftLabel);
             this.Controls.Add(this.plusOperationLabel);
@@ -344,14 +348,14 @@ namespace MathsQuiz
         private System.Windows.Forms.Label minusRightLabel;
         private System.Windows.Forms.Label minusEqualsLabel;
         private System.Windows.Forms.NumericUpDown difference;
-        private System.Windows.Forms.Label multiplyLeftLabel;
+        private System.Windows.Forms.Label timesLeftLabel;
         private System.Windows.Forms.Label multiplyOperationLabel;
-        private System.Windows.Forms.Label multiplyRightLabel;
+        private System.Windows.Forms.Label timesRightLabel;
         private System.Windows.Forms.Label multiplyEqualsLabel;
         private System.Windows.Forms.NumericUpDown product;
-        private System.Windows.Forms.Label divideLeftLabel;
+        private System.Windows.Forms.Label dividedLeftLabel;
         private System.Windows.Forms.Label divideOperationLabel;
-        private System.Windows.Forms.Label divideRightLabel;
+        private System.Windows.Forms.Label dividedRightLabel;
         private System.Windows.Forms.Label divideEqualsLabel;
         private System.Windows.Forms.NumericUpDown quotient;
         private System.Windows.Forms.Button startButton;
