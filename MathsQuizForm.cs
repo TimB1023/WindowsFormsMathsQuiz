@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -93,6 +94,9 @@ namespace MathsQuiz
             timeLeft = 30;
             timeLabel.Text = "30 seconds";
             timer1.Start();
+
+            //Sets the timer background back to white if not the first game
+            timeLabel.BackColor = Color.White;
         }
 
         private bool CheckTheAnswer()
@@ -105,6 +109,9 @@ namespace MathsQuiz
             else
                 return false;
         }
+
+        
+
 
         private void startButton_Click(object sender, EventArgs e)
         {
@@ -130,6 +137,10 @@ namespace MathsQuiz
                 // down. Decrease the time left by one second and 
                 // display the new time left by updating the 
                 // Time Left label.
+                if (timeLeft <6)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
                 timeLeft--;
                 timeLabel.Text = timeLeft + " seconds";
             }
@@ -161,6 +172,41 @@ namespace MathsQuiz
                 answerBox.Select(0, lengthOfAnswer);
             }
 
+        }
+        private void playSimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            simpleSound.Play();
+        }
+        private void correctAdditionAnswer(object sender, EventArgs e)
+        {
+            
+
+           if (addend1 + addend2 == sum.Value)
+            {
+                //MessageBox.Show("One down, three to go!");
+                playSimpleSound();
+            }
+            
+
+        }
+
+        private void difference_ValueChanged(object sender, EventArgs e)
+        {
+            if (minuend - subtrahend == difference.Value)
+            {
+                //MessageBox.Show("Two down, two to go!");
+                playSimpleSound();
+            }
+        }
+
+        private void product_ValueChanged(object sender, EventArgs e)
+        {
+            if (multiplicand * multiplier == product.Value)
+            {
+                //MessageBox.Show("Just one more!");
+                playSimpleSound();
+            }
         }
     }
 }
